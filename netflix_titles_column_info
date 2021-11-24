@@ -1,0 +1,15 @@
+Source Kaggle -> https://www.kaggle.com/shivamb/netflix-shows
+
+ 
+show_id -> Unique ID for every Movie / Tv Show
+type -> Identifier - A movie or Tv Show. -> Ya Movie ya Tv Show
+title -> Title of the Movie / Tv Show
+director -> Director of the Movie -> Verilerin %30' u boş.
+cast -> Actors involved(dahil olmuş) in the movie / show
+country -> Country  where the movie / show was produced
+date_added -> Date it was added on Netflix. -> September 25, 220
+release_year -> Actual Release year of the move / show -> 2020
+rating -> Tv Rating of the movie / show -> PG-13
+duration -> Total duration - in minutes or number of seasons
+listed_in -> Genere -> Crimme, Action, Adventure
+description -> The summary description
