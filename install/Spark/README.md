@@ -80,4 +80,5 @@ pyspark için:
     ./pyspark
 
 scala spark için:
+
     ./spark-shell
