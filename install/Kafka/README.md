@@ -2,6 +2,7 @@
 
 Bu döküman sıfır bir `linux` bilgisayara `Kafka` kurulumunun nasıl yapıldığını anlatacaktır.
 
+
 ## Java kurulumu
 
 Kafka kurulum için Java' ya ihtiyaç duymaktadır. Bu dokümanda Java olarak Java8 kurulmuştur. 

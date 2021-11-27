@@ -20,13 +20,13 @@ Spark JAVA_HOME' un ayarlanmasını istemektedir. Bu işlemi gerçekleştirmek i
 
     which java
 
-![which_java](which_java.png)
+![which_java](images/which_java.png)
 
 `which` komutunun çıktısını `readlink` komutuna parametre olarak veriyoruz. Bu sayede java' nın kurulu olduğu dizini buluyoruz. 
 
     readlink -f /usr/bin/java
 
-![readlink_java](readlink_java.png)
+![readlink_java](images/readlink_java.png)
 
 `readlink` komutunun çıktısının sadece `/usr/lib/jvm/java-8-openjdk-amd64` kısmını kullanacağız.
 
@@ -39,7 +39,7 @@ Spark JAVA_HOME' un ayarlanmasını istemektedir. Bu işlemi gerçekleştirmek i
 
 Aşağıdaki ifadeyi dosyanın en sonuna ekliyoruz sonra kaydetip çıkıyoruz.
 
-![bashrc](bashrc.png)
+![bashrc](images/bashrc.png)
 
     export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
@@ -67,6 +67,6 @@ Spark' ın çalışması için `SPARK_HOME` gerekmiyor lakin başka programlar i
 
 Aşağıdaki `SPARK_HOME` satırını dosyanın en sonuna ekliyoruz sonra kaydetip çıkıyoruz.
 
-![spark_home](spark_home.png)
+![spark_home](images/spark_home.png)
 
     export SPARK_HOME=$HOME/spark-3.2.0-bin-hadoop3.2
