@@ -70,3 +70,14 @@ Aşağıdaki `SPARK_HOME` satırını dosyanın en sonuna ekliyoruz sonra kaydet
 ![spark_home](images/spark_home.png)
 
     export SPARK_HOME=$HOME/spark-3.2.0-bin-hadoop3.2
+
+## Spark Çalıştırma
+
+Spark klasörünün içindeki `bin `dizinine giderek spark' ı çalıştırabilirsiniz.
+
+pyspark için:
+
+    ./pyspark
+
+scala spark için:
+    ./spark-shell
