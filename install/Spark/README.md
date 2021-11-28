@@ -43,6 +43,10 @@ Aşağıdaki ifadeyi dosyanın en sonuna ekliyoruz sonra kaydetip çıkıyoruz.
 
     export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
+Daha sonra
+    
+    source .bashrc
+
 
 ## Spark Kurulumu
 
@@ -70,6 +74,10 @@ Aşağıdaki `SPARK_HOME` satırını dosyanın en sonuna ekliyoruz sonra kaydet
 ![spark_home](images/spark_home.png)
 
     export SPARK_HOME=$HOME/spark-3.2.0-bin-hadoop3.2
+
+Daha sonra
+    
+    source .bashrc
 
 ## Spark Çalıştırma
 
