@@ -26,10 +26,11 @@ if __name__ == "__main__":
 ## Notnull olmayacak kolona gerçekten notnull değer gelmediğinden emin ol
 
     csv, schema, header, table, transform = getVariables()
-    conf = config.get("postgres")
+    conf = config.get("database-configs")
 
     spark = SparkSession \
             .builder \
+            .config("spark.jars", "src/jars/postgresql-42.2.5.jar") \
             .getOrCreate()
 
     df = spark.read.csv(
@@ -41,13 +42,13 @@ if __name__ == "__main__":
     if transform != None:
         df = transfroms.get(transform)(df)
 
-    df.write.format("jdbc").option("url", f"jdbc:postgresql://{conf.get('host')}:{conf.get('port')}/{conf.get('database')}") \
+    df.write.format("jdbc").option("url", f"jdbc:{conf.get('rdbms')}://{conf.get('host')}:{conf.get('port')}/{conf.get('db-name')}") \
         .option("dbtable", table) \
         .option("user", conf.get('user')) \
         .option("password", conf.get('password')) \
-        .option("driver", "org.postgresql.Driver") \
+        .option("driver", conf.get('driver')) \
         .mode('append') \
         .save()
 
-# users: spark-submit --driver-class-path src/jars/postgresql-42.2.5.jar write_to_postgres.py -c src/resource/users.csv -s users -tb users -tr users
-# netflix_title: spark-submit --driver-class-path src/jars/postgresql-42.2.5.jar write_to_postgres.py -c src/resource/netflix_titles.csv -s netflix_title -tb deneme -tr netflix_title
+# users: spark-submit --driver-class-path src/jars/postgresql-42.2.5.jar main.py -c src/resource/users.csv -s users -tb users -tr users
+# netflix_title: spark-submit --driver-class-path src/jars/postgresql-42.2.5.jar main.py -c src/resource/netflix_titles.csv -s netflix_title -tb deneme -tr netflix_title
