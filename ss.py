@@ -1,12 +1,16 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import from_json, col, window, to_timestamp
-from pyspark.sql.types import StringType, StructType, StructField, IntegerType
+from pyspark.sql.types import StringType, StructType, StructField, IntegerType, ArrayType
 
 schema = StructType([
     StructField("user_id",IntegerType(),False),
-    StructField("movie_id",IntegerType(),False),
-    StructField("start_time",StringType(),False),
-    StructField("end_date", StringType(), False),
+    StructField("status",StringType(),False),
+    StructField("film_watch",StringType(),False),
+    StructField("movie", ArrayType(StructType([
+      StructField("show_id",IntegerType(),True),
+      StructField("title", StringType(), True),
+      StructField("listed_in", StringType(), True)
+    ])), True)
 ])
 
 spark = SparkSession \
@@ -19,7 +23,7 @@ df = spark \
     .readStream \
     .format("kafka") \
     .option("kafka.bootstrap.servers", "localhost:9092") \
-    .option("subscribe", "movie_event") \
+    .option("subscribe", "user_activities") \
     .load()
 
 # df = df.selectExpr("CAST(value AS STRING)")

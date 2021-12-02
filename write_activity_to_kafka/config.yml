@@ -1,0 +1,10 @@
+database-configs:
+    rdbms: postgresql
+    db-name: postgres
+    user: postgres
+    password: 123
+    host: localhost
+    port: 5432
+kafka:
+    bootstrap.servers: localhost:9092
+    topic: user_activities

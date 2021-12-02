@@ -51,4 +51,4 @@ if __name__ == "__main__":
         .save()
 
 # users: spark-submit --driver-class-path src/jars/postgresql-42.2.5.jar main.py -c src/resource/users.csv -s users -tb users -tr users
-# netflix_title: spark-submit --driver-class-path src/jars/postgresql-42.2.5.jar main.py -c src/resource/netflix_titles.csv -s netflix_title -tb deneme -tr netflix_title
+# netflix_title: spark-submit --driver-class-path src/jars/postgresql-42.2.5.jar main.py -c src/resource/netflix_titles.csv -s netflix_title -tb movies -tr netflix_title
