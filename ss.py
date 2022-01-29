@@ -38,11 +38,10 @@ ta.printSchema()
 df = ta.withWatermark("start_time", "10 seconds").groupBy(window(col("start_time"), "10 seconds", "5 seconds"), "movie_id").count().orderBy("movie_id")
 # # bir üst satırın kaynak: https://databricks.com/blog/2021/10/12/native-support-of-session-window-in-spark-structured-streaming.html
 
-horse = df.writeStream \
-    .outputMode("complete") \
+horse = movie.writeStream \
+    .outputMode("append") \
     .format("console") \
     .option("truncate", "false") \
-    .trigger(processingTime="5 seconds") \
     .start()
 
 horse.awaitTermination()

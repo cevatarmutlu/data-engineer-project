@@ -1,6 +1,7 @@
 from confluent_kafka import Producer
 import json
 import time
+from src.enums.PersonStatusEnum import PersonStatus
 from src.utils import delivery_report, get_users
 import src.config as config
 
@@ -17,16 +18,15 @@ if __name__ == '__main__':
 
     while True:
         for user in users:
+            user.decide()
 
-            user_activity = user.get_activity()
-            print(user_activity)
-
-
-            p.produce(
-                topic=conf.get("topic"),
-                value=json.dumps(user_activity),
-                callback=delivery_report
-            )
-
-            time.sleep(.4)
+            if user.status == PersonStatus.ONLINE:
+                user_activity = user.get_activity()
+                print(user_activity)
+                p.produce(
+                    topic=conf.get("topic"),
+                    value=json.dumps(user_activity),
+                    callback=delivery_report
+                )
+                time.sleep(2)
         
